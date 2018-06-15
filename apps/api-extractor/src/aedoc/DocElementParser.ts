@@ -18,6 +18,11 @@ import { IApiItemReference} from '../api/ApiItem';
 
 export class DocElementParser {
   /**
+   * Matches an HTML tag such as `<td>` or `</td>` or `<img src="example.gif" />`
+   */
+  private static _htmlTagRegExp: RegExp = /<[\w\-]+(?:\s+[\w\-]+\s*=\s*"[^"]*")*\s*\/?>|<\/[\w\-]+>/g;
+
+  /**
    * Used to validate the display text for an \@link tag.  The display text can contain any
    * characters except for certain AEDoc delimiters: "@", "|", "{", "}".
    * This RegExp matches the first bad character.
